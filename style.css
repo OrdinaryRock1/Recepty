@@ -1,0 +1,361 @@
+﻿/* --- CSS Variables (Easy Theme Changing) --- */
+:root {
+    --primary-color: #ff6b6b;
+    --primary-hover: #ff5252;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-dark: #2b2b2b;
+    --text-light: #6c757d;
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+/* --- Base Reset & Typography --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* --- Hero Section --- */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(rgba(255, 235, 235, 0.8), rgba(255, 235, 235, 0.8)), url('https://images.unsplash.com/photo-1495195134817-aeb325a55b65?w=1200') center/cover;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* --- Search Bar --- */
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allows stacking on small screens */
+}
+
+input, select {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+}
+
+input {
+    flex: 1; /* Takes up remaining space */
+    min-width: 250px;
+}
+
+/* --- Buttons --- */
+.btn {
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* --- Recipe Grid & Cards --- */
+.recipe-grid {
+    display: grid;
+    /* This creates a responsive grid automatically! */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.recipe-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Placeholder for recipe images */
+.card-image {
+    height: 200px;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.card-content p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.tags {
+    margin-bottom: 20px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #e9ecef;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.tag.diet {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.card-btn {
+    width: 100%;
+    margin-top: auto; /* Pushes button to the bottom of the card */
+}
+
+/* --- Modal Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Dimmed background */
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.close-btn:hover { color: var(--primary-color); }
+
+#addRecipeForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* --- Ingredient Row Fixes --- */
+.ingredient-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    /* This lets the inputs stack on top of each other on tiny mobile screens */
+    flex-wrap: wrap;
+}
+
+.ingredient-row input {
+    /* THIS IS THE MAGIC LINE: It forces inputs to respect the container width */
+    min-width: 0;
+    padding: 10px; /* Make sure they look nice and uniform */
+}
+
+/* If the row wraps, make the remove button fit nicely */
+.ingredient-row button {
+    flex-shrink: 0; /* Prevents the 'X' button from getting squished */
+}
+
+/* --- Time Row Fixes --- */
+.time-row {
+    flex-wrap: wrap; /* Allows stacking on tiny screens */
+}
+
+.time-row input {
+    min-width: 0; /* Forces inputs to respect the box limits */
+    flex: 1; /* Makes them share the row perfectly 50/50 */
+}
+
+/* --- Modální Okna a Formuláře (Přesunuto z HTML) --- */
+.modal-wide {
+    max-width: 800px;
+}
+
+.modal-hr {
+    margin: 15px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.modal-hr-transparent {
+    margin: 15px 0;
+    border: 0;
+    border-top: 1px solid transparent;
+}
+
+.modal-section-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* --- Tlačítka --- */
+.btn-small {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+.btn-danger {
+    background: #ff5252;
+    color: white;
+    padding: 0 10px;
+    flex-shrink: 0;
+}
+
+/* --- Rozložení detailů receptu --- */
+.details-desc {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.details-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.details-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.details-column-wide {
+    flex: 2;
+    min-width: 300px;
+}
+
+.details-list {
+    margin-top: 10px;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+/* --- Vstupy formuláře --- */
+.ingredient-row input, .step-row textarea {
+    min-width: 0;
+    padding: 10px;
+    font-family: inherit;
+}
+
+.ing-name { flex: 2; }
+.ing-qty, .ing-unit { flex: 1; }
+
+.step-desc {
+    flex: 1;
+    resize: vertical;
+}
+
+.step-number {
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+/* --- Zprávy v JS --- */
+.status-msg {
+    text-align: center;
+    width: 100%;
+    color: var(--text-dark);
+}
+
+.error-msg {
+    text-align: center;
+    width: 100%;
+    color: #ff5252;
+    font-weight: bold;
+}
