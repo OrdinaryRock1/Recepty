@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddControllers();
+        
 
 
         builder.Services.AddCors(options =>
@@ -17,10 +17,10 @@ class Program
               .AllowAnyMethod();
             });
         });
-
+        builder.Services.AddControllers();
         var app = builder.Build();
 
-
+        app.UseRouting();
         app.UseCors("AllowMyFrontend");
 
         app.MapControllers();
