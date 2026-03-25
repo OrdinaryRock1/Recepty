@@ -40,7 +40,7 @@ public async Task<IActionResult> AddRecipe([FromBody] NewRecipe recipe)
     {
         // 1. Insert Recipe and grab the newly generated recipe_id (LAST_INSERT_ID)
         string recipeSql = @"
-            INSERT INTO Recipes (title, description, prep_time_minutes, cook_time_minutes, dietary_label, cuisine_type, image_data)
+            INSERT INTO Recipes (title, description, prep_time_minutes, cook_time_minutes, dietary_label, cuisine_type)
             VALUES (@Title, @Description, @PrepTime, @CookTime, @Diet, @Cuisine);
             SELECT LAST_INSERT_ID();";
             
